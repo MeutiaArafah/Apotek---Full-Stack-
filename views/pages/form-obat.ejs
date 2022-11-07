@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header bg-info">
+            <h4>Form Obat</h4>
+        </div>
+        <div class="card-body">
+            <form action="<%= targetRoute %>" method="post">
+                Nama Obat
+                <input type="text" name="nama_obat" id="nama_obat" class="form-control" value="<%= nama_obat %>"
+                    required />
+
+                Expired Date
+                <input type="date" name="expired_date" id="expired_date" class="form-control"
+                    value="<%= new Date(expired_date).toISOString().split('T')[0] %>" required />
+
+
+                Stok
+                <input type="number" name="stok" id="stok" class="form-control" value="<%= stok %>" required />
+
+                Harga
+                <input type="number" name="harga" id="harga" class="form-control" value="<%= harga %>" required />
+
+                Jenis
+                <select name="jenis" class="form-control" required>
+                    <option value="">--Pilih Jenis Obat--</option>
+                    <option value="cair">Cair</option>
+                    <option value="tablet">Tablet</option>
+                    <option value="kapsul">Kapsul</option>
+                    <option value="cream">Cream</option>
+                </select>
+
+                <!-- using js DOM to set default value of "jenis" -->
+                <script>
+                    document.querySelector('select[name="jenis"]').value = "<%= jenis %>"
+                </script>
+
+                <button type="submit" class="btn btn-success mt-2">
+                    Simpan
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
