@@ -66,3 +66,33 @@ exports.addToCart = async(request, response) => {
         return response.render(`../views/error-page`, sendData)
     }
 }
+
+/** function utk menghapus data item pada cart (keranjang) */
+exports.hapusCart = async (request, response) => {
+    try {
+        /** ambil seluruh data cart pada session */
+        let cart = request.session.cart
+
+        /** ambil id_obat yg akan dihapus dari cart */
+        let id_obat = request.params.id //karena id yg dihapus tampil di url
+
+        /** cari tau posisi index dari data yg akan dihapus */
+        let index = cart.findIndex(item => item.id_obat == id_obat)
+
+        /** hapus data sesuai index yg ditemukan */
+        cart.splice(index, 1) // splice utk menghapus data pada array
+
+        /** kembalikan data cart ke dalam session */
+        request.session.cart = cart
+        
+        /** direct ke halaman form transaksi */
+        return response.redirect(`/transaksi/add`)
+
+    } catch (error) {
+        /** handling error */
+        let sendData = {
+            message: error
+        }
+        return response.render(`../views/error-page`, sendData)
+    }
+}
