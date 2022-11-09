@@ -33,7 +33,7 @@
 
         <ul class="list-group">
             <% cart.forEach(element=> { %>
-                <li class="list-group-item">
+                <li class="list-group-item mb-2">
                     <div class="row">
                         <!-- area nama obat-->
                         <div class="col-lg-3">
@@ -72,14 +72,23 @@
                             <!-- <small>Opsi</small> <br> -->
                             <a href="/cart/<%= element.id_obat %>">
                                 <button type="button" class="btn btn-sm btn-danger m-2">
-                                    &times; <!-- hapus -->
+                                    &times;
+                                    <!-- hapus -->
                                 </button>
                             </a>
                         </div>
                     </div>
                 </li>
                 <% }) %>
-        </ul>
+            </ul>
+
+            <!-- button simpan -->
+            <% if (cart.length > 0) { %>
+                <button type="submit" class="btn btn-info ">
+                    Simpan Transaksi
+                </button>
+            <% } %>
+             
 
     </form>
 </div>

@@ -16,6 +16,12 @@ const authorization = require(`../middleware/authorization`)
 /** route utk menampilkan form transaksi */
 app.get(`/add`, authorization.cekUser, transaksiController.showFormTransaksi)
 
+/** route utk menyimpan data transaksi */
+app.post(`/add`, authorization.cekUser, transaksiController.simpanTransaksi)
+
+/** route utk menampilkan data transaksi */
+app.get(`/`, authorization.cekUser, transaksiController.showTransaksi)
+
 /** export object app */
 module.exports = app
 
