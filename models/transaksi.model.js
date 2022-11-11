@@ -15,7 +15,7 @@ exports.findAll = () => {
     return new Promise((resolve, rejected) => {
         /** define query to get all data */
         let query = `select transaksi.*,customer.nama_customer,
-        apoteker.nama_apotekeri from ${tableName} 
+        apoteker.nama_apoteker from ${tableName} 
          join apoteker on apoteker.id = transaksi.id_apoteker 
          join customer on transaksi.id_customer = customer.id`
 

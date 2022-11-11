@@ -22,6 +22,9 @@ app.post(`/add`, authorization.cekUser, transaksiController.simpanTransaksi)
 /** route utk menampilkan data transaksi */
 app.get(`/`, authorization.cekUser, transaksiController.showTransaksi)
 
+/** route utk menghapus data transaksi */
+app.get(`/:id`, authorization.cekUser, transaksiController.hapusTransaksi)
+
 /** export object app */
 module.exports = app
 

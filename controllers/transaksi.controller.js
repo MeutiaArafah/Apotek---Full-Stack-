@@ -181,3 +181,27 @@ exports.showTransaksi = async (request, response) => {
         return response.render(`../views/error-page`, sendData)
     }
 }
+
+/** function utk menghapus data transaksi */
+exports.hapusTransaksi = async(request, response) => {
+    try {
+        /** menampung data id yg akan dihapus */
+        let id = request.params.id
+
+        /** menghapus data detail_transaksi */
+        await detailModel.delete({id_transaksi: id})
+
+        /** menghapus data transaksi */
+        await transaksiModel.delete({id: id})
+
+        /** kembali lagi ke halaman transaksi */
+        return response.redirect(`/transaksi`)
+
+    } catch (error) {
+        /** handling error */
+        let sendData = {
+            message: error
+        }
+        return response.render(`../views/error-page`, sendData)
+    }
+}
